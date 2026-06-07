@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { AuthCard } from "@/features/auth/components/AuthCard";
 import { AuthFooterLink } from "@/features/auth/components/AuthFooterLink";
 import { AuthTextField } from "@/features/auth/components/AuthTextField";
-import { useRegisterForm } from "@/features/auth/hooks/useRegisterForm";
+import { useResetPasswordForm } from "@/features/auth/hooks/useResetPasswordForm";
 
-export function Register() {
-  const { form, isLoading, error, successMessage, onSubmit } = useRegisterForm();
+export function ResetPassword() {
+  const { form, isLoading, error, successMessage, onSubmit } = useResetPasswordForm();
 
   const {
     register,
@@ -14,28 +14,11 @@ export function Register() {
   } = form;
 
   return (
-    <AuthCard title="Crear cuenta" description="Registra tu cuenta para empezar a usar InsulinDog.">
+    <AuthCard title="Nueva contraseña" description="Escribe una nueva contraseña para tu cuenta.">
       <form onSubmit={onSubmit} className="space-y-4">
         <AuthTextField
-          id="name"
-          label="Nombre"
-          placeholder="Ej. Edgar"
-          registration={register("name")}
-          error={errors.name}
-        />
-
-        <AuthTextField
-          id="email"
-          label="Correo electrónico"
-          placeholder="tu@email.com"
-          type="email"
-          registration={register("email")}
-          error={errors.email}
-        />
-
-        <AuthTextField
           id="password"
-          label="Contraseña"
+          label="Nueva contraseña"
           placeholder="Mínimo 6 caracteres"
           type="password"
           registration={register("password")}
@@ -44,8 +27,8 @@ export function Register() {
 
         <AuthTextField
           id="confirmPassword"
-          label="Confirmar contraseña"
-          placeholder="Repite tu contraseña"
+          label="Confirmar nueva contraseña"
+          placeholder="Repite tu nueva contraseña"
           type="password"
           registration={register("confirmPassword")}
           error={errors.confirmPassword}
@@ -56,11 +39,11 @@ export function Register() {
         {successMessage && <p className="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{successMessage}</p>}
 
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Creando cuenta..." : "Crear cuenta"}
+          {isLoading ? "Actualizando..." : "Actualizar contraseña"}
         </Button>
       </form>
 
-      <AuthFooterLink text="¿Ya tienes cuenta?" linkText="Inicia sesión" to={PATHS.LOGIN} />
+      <AuthFooterLink text="¿Ya actualizaste tu contraseña?" linkText="Inicia sesión" to={PATHS.LOGIN} />
     </AuthCard>
   );
 }

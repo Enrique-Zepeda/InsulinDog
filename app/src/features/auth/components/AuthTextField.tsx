@@ -1,16 +1,16 @@
-import type { ChangeEvent, HTMLInputTypeAttribute } from "react";
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import type { HTMLInputTypeAttribute } from "react";
 
 type AuthTextFieldProps = {
   id: string;
-  name: string;
   label: string;
-  value: string;
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  error?: FieldError;
+  registration: UseFormRegisterReturn;
 };
 
-export function AuthTextField({ id, name, label, value, type = "text", placeholder, onChange }: AuthTextFieldProps) {
+export function AuthTextField({ id, label, type = "text", placeholder, error, registration }: AuthTextFieldProps) {
   return (
     <div>
       <label htmlFor={id} className="mb-1 block text-sm font-medium text-zinc-700">
@@ -19,13 +19,13 @@ export function AuthTextField({ id, name, label, value, type = "text", placehold
 
       <input
         id={id}
-        name={name}
         type={type}
-        value={value}
-        onChange={onChange}
         placeholder={placeholder}
         className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm outline-none transition focus:border-zinc-900"
+        {...registration}
       />
+
+      {error && <p className="mt-1 text-sm text-red-600">{error.message}</p>}
     </div>
   );
 }

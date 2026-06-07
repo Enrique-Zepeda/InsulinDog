@@ -11,6 +11,8 @@ import { PublicRoute } from "./PublicRoute";
 import { Login } from "@/pages/LoginPage";
 import { Register } from "@/pages/RegisterPage";
 import { Home } from "@/pages/HomePage";
+import { ForgotPassword } from "@/pages/ForgotPasswordPage";
+import { ResetPassword } from "@/pages/ResetPasswordPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
           { path: PATHS.REGISTER, element: <Register /> },
         ],
       },
+    ],
+  },
+
+  {
+    element: <AuthLayout />,
+    children: [
+      { path: PATHS.FORGOT_PASSWORD, element: <ForgotPassword /> },
+      { path: PATHS.RESET_PASSWORD, element: <ResetPassword /> },
     ],
   },
 

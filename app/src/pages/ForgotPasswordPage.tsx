@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
-
 import { PATHS } from "@/app/router/paths";
 import { Button } from "@/components/ui/button";
 import { AuthCard } from "@/features/auth/components/AuthCard";
 import { AuthFooterLink } from "@/features/auth/components/AuthFooterLink";
 import { AuthTextField } from "@/features/auth/components/AuthTextField";
-import { useLoginForm } from "@/features/auth/hooks/useLoginForm";
+import { useForgotPasswordForm } from "@/features/auth/hooks/useForgotPasswordForm";
 
-export function Login() {
-  const { form, isLoading, error, onSubmit } = useLoginForm();
+export function ForgotPassword() {
+  const { form, isLoading, error, successMessage, onSubmit } = useForgotPasswordForm();
 
   const {
     register,
@@ -16,7 +14,10 @@ export function Login() {
   } = form;
 
   return (
-    <AuthCard title="Iniciar sesión" description="Accede a tu cuenta de InsulinDog.">
+    <AuthCard
+      title="Recuperar contraseña"
+      description="Escribe tu correo y te enviaremos un link para restablecer tu contraseña."
+    >
       <form onSubmit={onSubmit} className="space-y-4">
         <AuthTextField
           id="email"
@@ -27,29 +28,16 @@ export function Login() {
           error={errors.email}
         />
 
-        <AuthTextField
-          id="password"
-          label="Contraseña"
-          placeholder="Tu contraseña"
-          type="password"
-          registration={register("password")}
-          error={errors.password}
-        />
-
-        <div className="text-right">
-          <Link to={PATHS.FORGOT_PASSWORD} className="text-sm font-medium text-zinc-900">
-            ¿Olvidaste tu contraseña?
-          </Link>
-        </div>
-
         {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>}
 
+        {successMessage && <p className="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{successMessage}</p>}
+
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Iniciando sesión..." : "Iniciar sesión"}
+          {isLoading ? "Enviando correo..." : "Enviar link de recuperación"}
         </Button>
       </form>
 
-      <AuthFooterLink text="¿No tienes cuenta?" linkText="Regístrate" to={PATHS.REGISTER} />
+      <AuthFooterLink text="¿Recordaste tu contraseña?" linkText="Inicia sesión" to={PATHS.LOGIN} />
     </AuthCard>
   );
 }

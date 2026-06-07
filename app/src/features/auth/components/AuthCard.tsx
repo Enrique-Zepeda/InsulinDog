@@ -1,3 +1,5 @@
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PawPrint } from "lucide-react";
 import type { ReactNode } from "react";
 
 type AuthCardProps = {
@@ -8,15 +10,16 @@ type AuthCardProps = {
 
 export function AuthCard({ title, description, children }: AuthCardProps) {
   return (
-    <main className="flex min-h-screen items-center justify-center px-4">
-      <section className="w-full max-w-md rounded-2xl bg-white p-6 shadow-sm">
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-zinc-900">{title}</h1>
-          <p className="mt-2 text-sm text-zinc-500">{description}</p>
+    <Card className="w-full max-w-md border-border/60 shadow-lg shadow-primary/5">
+      <CardHeader className="items-center text-center">
+        <div className="mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+          <PawPrint className="h-7 w-7" aria-hidden="true" />
         </div>
+        <CardTitle className="text-2xl font-bold text-balance">{title}</CardTitle>
+        <CardDescription className="text-pretty">{description}</CardDescription>
+      </CardHeader>
 
-        {children}
-      </section>
-    </main>
+      <CardContent>{children}</CardContent>
+    </Card>
   );
 }
