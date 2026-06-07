@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:types": "npx supabase gen types typescript --project-id hxwkbeaacvxtjsdaozxh --schema public > src/shared/types/database.types.ts"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",
