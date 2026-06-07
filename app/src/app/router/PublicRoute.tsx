@@ -1,10 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { PATHS } from "./paths";
+import { useAppSelector } from "../store/hooks";
 
 export function PublicRoute() {
-  // TODO: Conectar a Redux/Supabase
-  const isLoading = false;
-  const session = true;
+  const { isLoading, isAuthenticated } = useAppSelector((state) => state.auth);
 
   if (isLoading) {
     return (
@@ -14,8 +13,7 @@ export function PublicRoute() {
     );
   }
 
-  if (session) {
-    // Si ya tiene sesión activa, lo mandamos directo al dashboard de inicio
+  if (isAuthenticated) {
     return <Navigate to={PATHS.HOME} replace />;
   }
 

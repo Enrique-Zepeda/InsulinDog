@@ -1,11 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { PATHS } from "./paths";
+import { useAppSelector } from "../store/hooks";
 
 export function ProtectedRoute() {
-  // TODO: Estado global (Redux) o un hook de Auth
-
-  const isLoading = false; // Cambiará a true mientras Supabase verifica el token
-  const session = true; // Cambia a true manual si quieres ver el layout principal
+  const { isLoading, isAuthenticated } = useAppSelector((state) => state.auth);
 
   if (isLoading) {
     return (
@@ -15,7 +13,7 @@ export function ProtectedRoute() {
     );
   }
 
-  if (!session) {
+  if (!isAuthenticated) {
     return <Navigate to={PATHS.LOGIN} replace />;
   }
 

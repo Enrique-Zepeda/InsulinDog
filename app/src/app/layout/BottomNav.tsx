@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { PATHS } from "@/router/paths";
+import { PATHS } from "@/app/router/paths";
 
 export function BottomNav() {
   return (
