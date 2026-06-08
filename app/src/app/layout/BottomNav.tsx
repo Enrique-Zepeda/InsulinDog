@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { PATHS } from "@/app/router/paths";
+import { LogoutButton } from "@/features/auth/components/LogoutButton";
 
 export function BottomNav() {
   return (
@@ -27,6 +28,9 @@ export function BottomNav() {
         <span className="text-xl leading-none">🐶</span>
         <span>Perfil</span>
       </NavLink>
+      <LogoutButton variant="ghost" className="justify-start">
+        Salir
+      </LogoutButton>
     </nav>
   );
 }

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { PATHS } from "@/app/router/paths";
+import { LogoutButton } from "@/features/auth/components/LogoutButton";
 
 export function Sidebar() {
   return (
@@ -36,6 +37,7 @@ export function Sidebar() {
           <span className="text-xl">🐶</span>
           <span>Perfil</span>
         </NavLink>
+        <LogoutButton variant="ghost">Salir</LogoutButton>
       </nav>
     </aside>
   );

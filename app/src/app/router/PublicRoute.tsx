@@ -1,14 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { PATHS } from "./paths";
-import { useAppSelector } from "../store/hooks";
+
+import { PATHS } from "@/app/router/paths";
+import { useAppSelector } from "@/app/store/hooks";
 
 export function PublicRoute() {
-  const { isLoading, isAuthenticated } = useAppSelector((state) => state.auth);
+  const { isAuthenticated, isCheckingSession } = useAppSelector((state) => state.auth);
 
-  if (isLoading) {
+  if (isCheckingSession) {
     return (
-      <div className="flex h-screen items-center justify-center bg-zinc-50">
-        <p className="text-zinc-500">Cargando...</p>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-sm text-zinc-500">Cargando sesión...</p>
       </div>
     );
   }

@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 import { PATHS } from "@/app/router/paths";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { clearAuthFeedback, loginUser } from "@/features/auth/slices/authSlice";
+import { clearAuthFeedback } from "@/features/auth/slices/authSlice";
 import { loginSchema, type LoginFormValues } from "@/features/auth/schemas/loginSchema";
+import { loginUser } from "../thunks";
 
 export function useLoginForm() {
   const dispatch = useAppDispatch();

@@ -6,13 +6,13 @@ import { AppLayout } from "@/app/layout/AppLayout";
 import { AuthLayout } from "@/app/layout/AuthLayout";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { PublicRoute } from "./PublicRoute";
+import { Login } from "@/features/auth/pages/LoginPage";
+import { Register } from "@/features/auth/pages/RegisterPage";
+import { ForgotPassword } from "@/features/auth/pages/ForgotPasswordPage";
+import { ResetPassword } from "@/features/auth/pages/ResetPasswordPage";
+import { Home } from "@/features/dashboard/pages/HomePage";
 
 // Features (Pantallas)
-import { Login } from "@/pages/LoginPage";
-import { Register } from "@/pages/RegisterPage";
-import { Home } from "@/pages/HomePage";
-import { ForgotPassword } from "@/pages/ForgotPasswordPage";
-import { ResetPassword } from "@/pages/ResetPasswordPage";
 
 export const router = createBrowserRouter([
   {
