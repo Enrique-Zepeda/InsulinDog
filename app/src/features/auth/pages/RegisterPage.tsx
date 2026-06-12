@@ -19,7 +19,7 @@ export function Register() {
         <AuthTextField
           id="name"
           label="Nombre"
-          placeholder="Ej. Edgar"
+          placeholder="Ej. Tonita"
           registration={register("name")}
           error={errors.name}
         />
